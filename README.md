@@ -1,6 +1,6 @@
-# XUI Chrome extension
+# Figma Layout Overrides
 
-A simple chrome extension to visually highlight the use of the XUI design system on Xero websites. This shows in two ways:
+A simple chrome extension to adjust the Figma website editor in a few areas, including:
 1. An outline added to known component containers, these are defined in `inject.css`
 2. A colour applied to text that is either using specific XUI classes or will inherit them from the component they are within.
 An alert will inform the user if there are any XUI stylesheets loaded on the page, and their full path.
@@ -8,7 +8,7 @@ An alert will inform the user if there are any XUI stylesheets loaded on the pag
 ![Screen recording showing the extension being run on several pages](demo-extension.gif)
 
 ## Notes
-* The plugin will only function on Xero URLs that match this format `*://*.xero.com/*`
+* The plugin will only function on Figma URLs that match this format `*://*.figma.com/*`
 * The alert will fire when the action button is clicked
 * If you are using multiple tabs at the same time, you might need to toggle the button to relaunch the extension.
 
@@ -22,7 +22,6 @@ An alert will inform the user if there are any XUI stylesheets loaded on the pag
 
 
 ## Roadmap
-- [x] Highlight XUI elements with CSS
-- [x] Report any CSS files loaded that have `xui` in the file path
-- [ ] Prevent alerts when not on a matching URL, perhaps indicate with icon change to `xui_32_off.png`
-- [ ] Improve on/off state per tab, reduce need to relaunch action.
+- [x] Widen properties panel
+- [x] Widen select dropdowns
+- [ ] Correct some of the quirks in the sidebar
