@@ -9,8 +9,10 @@
   "action": {
     "default_title": "Figma enhance"
   }, 
+  "host_permissions": [
+    "https://*.figma.com/file/*"
+  ],
   "permissions": [
-    "activeTab",
     "tabs",
     "scripting"
   ],
