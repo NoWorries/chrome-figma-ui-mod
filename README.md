@@ -8,7 +8,6 @@ A simple chrome extension to adjust the Figma website editor in a few areas, the
 
 ## Notes
 * The plugin will only function on Figma URLs that match this format `*://*.figma.com/*`
-* The alert will fire when the action button is clicked
 * If you are using multiple tabs at the same time, you might need to toggle the button to relaunch the extension.
 
 ## Local setup instructions
