@@ -1,0 +1,23 @@
+{
+  "name": "Figma UI Mod",
+  "description": "Opinionated enhancements to Figma UI",
+  "version": "0.1",
+  "manifest_version": 3,
+  "background": {
+    "service_worker": "background.js"
+  },
+  "action": {
+    "default_title": "Figma enhance"
+  }, 
+  "permissions": [
+    "activeTab",
+    "tabs",
+    "scripting"
+  ],
+  "icons": {
+    "16": "favicon_16.png",
+    "32": "favicon_32.png",
+    "48": "favicon_48.png",
+    "128": "favicon_128.png"
+  }
+}

@@ -1,0 +1,32 @@
+/**
+ * Figma enhancement
+ **/
+
+:root {
+--layout: tomato;
+--text: tomato;
+--panelWidth: 500px;
+--selectDropdownWidth: 300px;
+--selectStyleWidth: 400px;
+}
+
+
+[class^="properties_panel--drillDownContainerNarrow--"] {
+    width: var(--panelWidth) !important;
+}
+
+[class^="properties_panel--scrollContainer--"] {
+    width: calc(var(--panelWidth) - 1px) !important;
+}
+
+[class^="properties_panel--scrollContainer--"] [class^="select--dropdownContainer--"] {
+    width: var(--selectDropdownWidth) !important;
+}
+
+[class^="properties_panel--scrollContainer--"] [class^="draggable_modal--positionedContainer--"] {
+    width: var(--selectDropdownWidth) !important;
+}
+
+[class^="properties_panel--scrollContainer--"] [class^="component_panel_title--container--"] {
+    flex-grow: 1;
+}
