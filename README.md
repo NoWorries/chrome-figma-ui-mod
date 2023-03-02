@@ -1,9 +1,8 @@
 # Figma Layout Overrides
 
-A simple chrome extension to adjust the Figma website editor in a few areas, including:
-1. An outline added to known component containers, these are defined in `inject.css`
-2. A colour applied to text that is either using specific XUI classes or will inherit them from the component they are within.
-An alert will inform the user if there are any XUI stylesheets loaded on the page, and their full path.
+A simple chrome extension to adjust the Figma website editor in a few areas, these are defined in `inject.css`:
+1. Increase width of the Properties Panel
+2. Increase width of Select Dropdown panels
 
 ![Screen recording showing the extension being run on several pages](demo-extension.gif)
 
