@@ -23,3 +23,6 @@ A simple chrome extension to adjust the Figma website editor in a few areas, the
 - [x] Widen properties panel
 - [x] Widen select dropdowns
 - [ ] Correct some of the quirks in the sidebar
+
+## Known limitations
+* Color Styles (Grid view) - Color options set with positioned absolute in 6-column rows.

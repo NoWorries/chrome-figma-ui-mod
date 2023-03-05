@@ -5,16 +5,20 @@
 :root {
 --layout: tomato;
 --text: tomato;
---panelWidth: 500px;
---selectDropdownWidth: 300px;
---selectStyleWidth: 400px;
+--columnWidth: 16px;
+--rowWidth: calc(var(--columnWidth) * 28);
+--panelWidth: calc(16px + var(--rowWidth));
+--dropdownWidth: calc(var(--panelWidth) * 0.75);
+--selectDropdownWidth: var(--dropdownWidth);
+--selectStyleWidth: var(--dropdownWidth);
 }
 
-
+/* Properties panel */
 [class^="properties_panel--drillDownContainerNarrow--"] {
     width: var(--panelWidth) !important;
 }
 
+/* Shrink Properties panel to show the left border */
 [class^="properties_panel--scrollContainer--"] {
     width: calc(var(--panelWidth) - 1px) !important;
 }
@@ -29,4 +33,19 @@
 
 [class^="properties_panel--scrollContainer--"] [class^="component_panel_title--container--"] {
     flex-grow: 1;
+}
+
+/* Color/Effect Styles panel */
+[class^="properties_panel--propertiesPanel--"] [class^="style_picker--search--"] + div > div {
+    width: 100% !important;
+}
+
+[class^="left_panel--panelContainer--"] [class^="scroll_container--scrollContainer--"] {
+    overflow-x: scroll;
+}
+
+[class^="left_panel--panelContainer--"] [class^="scroll_container--full--"] [class^="object_row--rowText--"]{
+    /* outline: red 1px solid; */
+    overflow: visible;
+    text-overflow: unset;
 }
