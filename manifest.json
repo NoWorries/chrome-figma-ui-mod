@@ -1,7 +1,7 @@
 {
   "name": "Figma UI Mod",
   "description": "Opinionated enhancements to Figma UI",
-  "version": "0.1",
+  "version": "0.2",
   "manifest_version": 3,
   "background": {
     "service_worker": "background.js"
@@ -13,7 +13,6 @@
     "https://*.figma.com/file/*"
   ],
   "permissions": [
-    "tabs",
     "scripting"
   ],
   "icons": {
