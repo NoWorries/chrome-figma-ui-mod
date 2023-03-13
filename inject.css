@@ -64,3 +64,59 @@
    
 
 }
+
+
+/* Properties panel - Extend right icons */
+[class^="properties_panel--scrollContainer--"] [class*="background_panel--visible--"],
+[class^="properties_panel--scrollContainer--"] [class*="layer_panel--visible--"],
+[class^="properties_panel--scrollContainer--"] [class*="transform_panel--iconButton--SP2iR"] {
+    grid-column-start: 27 !important;
+    grid-column-end: span 2 !important;
+}
+
+/* Properties panel - Adjust grid icons */
+
+[class^="properties_panel--scrollContainer--"] [class*="align_panel--alignButton--"] {
+    width: 32px;
+}
+[class^="properties_panel--scrollContainer--"] [class*="orientation_control--orientationControl--"]{
+    grid-column-start: 26 !important;
+    grid-column-end: unset !important;
+}
+
+[class^="properties_panel--scrollContainer--"] [class*="transform_panel--checkbox--"] {
+    grid-column-end: span 2 !important;
+    place-self: flex-start !important;
+}
+
+/* Stroke panel - Adjust grid icons */
+
+[class^="properties_panel--scrollContainer--"] [class*="paint_panels--advancedStroke--"] {
+    grid-column-start: 27 !important;
+    grid-column-end: span 2 !important;
+}
+
+/* Styles panel - Adjust indents */
+[class^="properties_panel--scrollContainer--"] [class*="styles--childLeftContainer--"] {
+    grid-column-end: span 1 !important;
+}
+[class^="properties_panel--scrollContainer--"] [class*="raw_components--_singleRow--"] > span {
+    grid-column-end: span 2 !important;
+}
+
+/* Eyedropper loupe position */
+
+[class^="eyedropper_view--container--"] {
+    right: calc(12px + var(--panelWidth)) !important;
+}
+
+/* Hint panel adjust width and icons */
+[class^="properties_panel--scrollContainer--"] [class*="hint_panel--onboardingDismissIconNarrow--"] {
+    grid-column-start: 27 !important;
+}
+[class^="properties_panel--scrollContainer--"] [class*="hint_panel--onboardingLabel--"] {
+    grid-column-start: 3 !important;
+}
+[class^="properties_panel--scrollContainer--"] [class*="hint_panel--onboardingLabelNarrow--"] {
+    grid-column-end: span 26 !important;
+}
