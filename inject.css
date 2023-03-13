@@ -101,3 +101,15 @@
 [class^="properties_panel--scrollContainer--"] [class*="hint_panel--onboardingLabelNarrow--"] {
     grid-column-end: span 26 !important;
 }
+
+/* File preview enlarged */
+
+[class^="properties_panel--scrollContainer--"] [class*="export_panel--previewThumbnailContainer--"] > img {
+    aspect-ratio: auto;
+    width: var(--dropdownWidth);
+    height: auto;
+}
+
+[class^="properties_panel--scrollContainer--"] [class*="export_panel--label--"] {
+    grid-column-start: 3;
+}

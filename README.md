@@ -25,6 +25,7 @@ A simple chrome extension to adjust the Figma website editor in a few areas, the
 - [x] Correct some of the quirks in the sidebar
 - [x] Allow text overflow for layer name, and horizontal scroll
 - [x] Reposition eyedropper
+- [x] File preview image enlarged
 
 ## Known limitations
 * Color Styles (Grid view) - Color options set with positioned absolute in 6-column rows.
