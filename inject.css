@@ -40,31 +40,12 @@
     width: 100% !important;
 }
 
-/* Layers panel horizontal scrolling */
-[class^="left_panel--panelContainer--"] [class^="scroll_container--scrollContainer--"] {
-   
-}
-
 /* Layers panel / Layer name */
 [class^="left_panel--panelContainer--"] [class^="scroll_container--full--"] [class^="object_row--rowText--"]{
     
     overflow-x: auto;
     text-overflow: unset;
 }
-
-/* Layers panel / Top layer in a group */
-[class^="left_panel--panelContainer--"] [class^="scroll_container--full--"] [class*="object_row--topLevel--"] {
-    
-
-}
-
-
-/* Layers panel / Lock and Visibility actions */
-[class^="left_panel--panelContainer--"] [class^="scroll_container--full--"] [class^="object_row--rowActions--"] {
-   
-
-}
-
 
 /* Properties panel - Extend right icons */
 [class^="properties_panel--scrollContainer--"] [class*="background_panel--visible--"],
