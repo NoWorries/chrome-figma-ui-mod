@@ -113,3 +113,58 @@
 [class^="properties_panel--scrollContainer--"] [class*="export_panel--label--"] {
     grid-column-start: 3;
 }
+
+
+/* Fullsize modal for Analytics and Library */
+
+body:has([class^="header_modal--modal--"]){
+    position: fixed;
+}
+
+[class^="header_modal--modal--"] {
+    min-width: 100vw !important;
+    min-height: 100vh !important;
+    /* outline: 1px solid green;
+    outline-offset: -1px; */
+}
+
+[class^="header_modal--modalBackground--"] {
+    overscroll-behavior-y: contain;
+    overflow-y: auto;
+}
+
+[class^="org_view_modal--container--"] {
+    height: calc(100vh - 49px) !important;
+    /* outline: 1px solid red;
+    outline-offset: -1px; */
+}
+
+[class^="org_view_modal--container--"] [class^="sliding_pane--slidingPaneContainer--"] {
+    overflow: auto;
+    overscroll-behavior-y: contain;
+    overflow-y: auto;
+}
+
+[class^="header_modal--modal--"] [class^="dsa_list_view--"],
+[class^="header_modal--modal--"] [class^="dsa_file_view_overview--fileViewDSA--"],
+[class^="header_modal--modal--"] [class^="dsa_file_view_analytics--fileViewDSAWithFooter--"],
+[class^="header_modal--modal--"] [class^="library_item_view--fileViewDSANoTab--"],
+[class^="header_modal--modal--"] [class^="library_item_view--fileViewDSAWithFooterNoTab--"],
+[class^="header_modal--modal--"] [class^="shared_fonts_modal_content--scrollContainer--"] {
+    min-width: 100% !important;
+    /* outline: 1px solid pink;
+    outline-offset: -1px; */
+}
+
+[class^="dsa_file_view_overview--fileViewDSA--"],
+[class^="dsa_file_view_analytics--fileViewDSAWithFooter--"],
+[class^="file_view_styles--fileViewDSA--"] {
+    height: calc(100% - 89px) !important;
+}
+
+[class^="library_item_view--fileViewDSAWithFooterNoTab--"],
+[class^="library_item_view--fileViewDSANoTab--"] {
+    height: calc(100% - 40px) !important;
+    /* outline: 1px solid blue;
+    outline-offset: -1px; */
+}
