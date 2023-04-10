@@ -124,8 +124,6 @@
     [class^="header_modal--modal--"] {
         min-width: 100vw !important;
         min-height: 100vh !important;
-        /* outline: 1px solid green;
-        outline-offset: -1px; */
     }
     
     [class^="header_modal--modalBackground--"] {
@@ -135,21 +133,23 @@
     
     [class^="org_view_modal--container--"] {
         height: calc(100vh - 49px) !important;
-        /* outline: 1px solid red;
-        outline-offset: -1px; */
     }
     
     /* Libraries scrolling panel */
     [class^="org_view_modal--container--"] [class^="dsa_list_view--slidingPaneContainer--"] {
-        height: calc(100vh - 40px) !important;
+        height: calc(100vh - 49px) !important;
     }
     
     [class^="org_view_modal--container--"] [class^="sliding_pane--slidingPaneContainer--"] {
-        overflow: auto;
-        overscroll-behavior-y: contain;
-        overflow-y: auto;
+        overflow: auto !important;
+        overscroll-behavior-y: contain !important;
+        overflow-y: auto !important;
     }
     
+    [class^="dsa_list_view--dsaFileListView--"] {
+        max-height: unset;
+    }
+
     [class^="header_modal--modal--"] [class^="dsa_list_view--"],
     [class^="header_modal--modal--"] [class^="dsa_file_view_overview--fileViewDSA--"],
     [class^="header_modal--modal--"] [class^="dsa_file_view_analytics--fileViewDSAWithFooter--"],
@@ -157,29 +157,23 @@
     [class^="header_modal--modal--"] [class^="library_item_view--fileViewDSAWithFooterNoTab--"],
     [class^="header_modal--modal--"] [class^="shared_fonts_modal_content--scrollContainer--"] {
         min-width: 100% !important;
-        /* outline: 1px solid pink;
-        outline-offset: -1px; */
     }
     
     [class^="file_view_styles--fileViewDSA--"],
     [class^="header_modal--modal--"] [class^="dsa_list_view--dsaFileListView--"] {
-        height: calc(100vh - 89px) !important;
+        height: calc(100vh - 98px) !important;
     }
     
-    [class^="library_item_view--fileViewDSAWithFooterNoTab--"] {
-        height: calc(100vh - 129px) !important;
-    }
     
     [class^="dsa_file_view_analytics--fileViewDSAWithFooter--"] {
         height: calc(100vh - 178px) !important;
     }
     
+    [class^="library_item_view--fileViewDSAWithFooterNoTab--"],
     [class^="dsa_file_view_overview--fileViewDSA--"]{
         height: calc(100vh - 138px) !important;
     }
     
     [class^="library_item_view--fileViewDSANoTab--"] {
         height: calc(100vh - 49px) !important;
-        /* outline: 1px solid blue;
-        outline-offset: -1px; */
     }
