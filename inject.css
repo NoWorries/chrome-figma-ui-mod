@@ -102,6 +102,12 @@
         grid-column-end: span 26 !important;
     }
     
+    /* Extend width of properties */
+
+    [class*="component_prop_def_row--componentPropVariantValues--"] {
+       max-width: unset !important;
+    }
+
     /* File preview enlarged */
     
     [class^="properties_panel--scrollContainer--"] [class*="export_panel--previewThumbnailContainer--"] > img {
