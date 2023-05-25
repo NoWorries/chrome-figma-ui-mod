@@ -85,6 +85,16 @@
         grid-column-end: span 2 !important;
     }
     
+
+
+    /* Properties new property icon */
+
+    [class*="draggable_list--addButton--"],
+    [class*="props_panel--addButtonContainer--"] {
+        grid-column-start: 27 !important;
+        grid-column-end: span 2 !important;
+    }
+
     /* Eyedropper loupe position */
     
     [class^="eyedropper_view--container--"] {
@@ -120,7 +130,23 @@
         grid-column-start: 3;
     }
     
-    
+    /* Description width increase */
+
+    [class*="prop_assignment_row--assignmentValue--"],
+    [class*="instance_panel--description--"] {
+        width: auto !important;
+    }
+
+    [class*="component_prop_def_row--componentPropDefName--"] {
+        width: 100% !important;
+    }
+
+    /* Properties flex columns */ 
+
+    [class^="prop_assignment_row--propAssignmentRow--"] {
+        grid-template-columns: repeat(27, var(--columnWidth)) !important;
+    }
+
     /* Fullsize modal for Analytics and Library */
     
     body:has([class^="header_modal--modal--"]){
@@ -141,6 +167,19 @@
         height: calc(100vh - 49px) !important;
     }
     
+    /* Auto layout icon align to right */
+
+    [class*="stack_panel_v4--paddingControlsToggleIcon--"] {
+        grid-column: 27 / span 2 !important;
+    }
+
+    /* Position section, right hand icons */
+
+    [class*="stack_panel_v4--layoutDetailsIcon--"],
+    [class*="stack_panel_v4--paddingControlsToggleIcon--"] {
+        grid-column: 27 / span 2;
+    }
+
     /* Libraries scrolling panel */
     [class^="org_view_modal--container--"] [class^="dsa_list_view--slidingPaneContainer--"] {
         height: calc(100vh - 49px) !important;
