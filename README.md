@@ -1,8 +1,12 @@
 # Figma Layout Overrides
 
 A simple chrome extension to adjust the Figma website editor in a few areas, these are defined in `inject.css`:
-1. Increase width of the Properties Panel
-2. Increase width of Select Dropdown panels
+- Doubled the width of the Properties Panel (Right hand sidebar) – reduce truncation
+- Wider Select Dropdowns – avoid truncated component names
+- Increased the size of File Preview thumbnail – more space due to the wider sidebar
+- Added horizontal scroll to the Layer List – reduce the truncation of layer names
+- Increased the size of Library Analytics modal – instead of a narrow modal it now takes up the full viewport
+- Swap instance picker enlarged – avoid truncation of component names
 
 ![Screen recording showing the extension being run on several pages](demo-extension.gif)
 
@@ -17,7 +21,6 @@ A simple chrome extension to adjust the Figma website editor in a few areas, the
    - The Extension Management page can also be opened by clicking on the Chrome menu, hovering over More Tools then selecting Extensions.
 4. Enable Developer Mode by clicking the toggle switch next to Developer mode.
 5. Click the LOAD UNPACKED button and select the extension directory.
-
 
 ## Roadmap
 - [x] Widen properties panel
