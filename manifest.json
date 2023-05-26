@@ -1,7 +1,7 @@
 {
   "name": "Figma UI Mod",
   "description": "UI enhancements for Figma",
-  "version": "0.7",
+  "version": "0.7.1",
   "manifest_version": 3,
   "background": {
     "service_worker": "background.js"
