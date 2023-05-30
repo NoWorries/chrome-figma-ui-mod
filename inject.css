@@ -181,7 +181,9 @@
     }
 
     /* Libraries scrolling panel */
-    [class^="org_view_modal--container--"] [class^="dsa_list_view--slidingPaneContainer--"] {
+    [class^="org_view_modal--container--"] [class^="dsa_list_view--slidingPaneContainer--"],
+    [class^="org_view_modal--container--"] [class^="dsa_file_view_v2--slidingPane--"],
+    [class^="org_view_modal--container--"] [class^="dsa_file_view_modal--container--"] {
         height: calc(100vh - 49px) !important;
     }
     
@@ -211,14 +213,15 @@
     
     
     [class^="dsa_file_view_analytics--fileViewDSAWithFooter--"] {
-        height: calc(100vh - 178px) !important;
+        height: calc(100vh - 129px) !important;
     }
     
     [class^="library_item_view--fileViewDSAWithFooterNoTab--"],
     [class^="dsa_file_view_overview--fileViewDSA--"]{
-        height: calc(100vh - 138px) !important;
+        height: calc(100vh - 89px) !important;
     }
     
+    [class^="dsa_file_view_modal--container--"]
     [class^="library_item_view--fileViewDSANoTab--"] {
         height: calc(100vh - 49px) !important;
     }
