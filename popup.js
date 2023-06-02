@@ -3,15 +3,10 @@ const function1 = document.getElementById('button1');
 const function2 = document.getElementById('button2');
 const function3 = document.getElementById('button3');
   
-
 async function getCurrentTab() {
     const queryOptions = { active: true, currentWindow: true };
     const [tab] = await chrome.tabs.query(queryOptions);
     return tab;
-  }
-
-function showAlert(givenName) {
-    alert(`Hello, ${givenName}`);
   }
 
 // Listen for messages from the background.js
@@ -19,7 +14,6 @@ let currentlyEnabled = false;
 
 function1.addEventListener('click', async () => {
     const tab = await getCurrentTab();
-
 
     if (currentlyEnabled) {
         await chrome.scripting.removeCSS({
