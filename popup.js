@@ -1,7 +1,6 @@
 
 const function1 = document.getElementById('button1');
 const function2 = document.getElementById('button2');
-const function3 = document.getElementById('button3');
   
 async function getCurrentTab() {
     const queryOptions = { active: true, currentWindow: true };
@@ -43,4 +42,12 @@ function1.addEventListener('click', async () => {
     
       }
 
+  });
+
+  function2.addEventListener('click', async function () {
+    // Get the current tab
+    const currentTab = await getCurrentTab();
+  
+    // Send a message to the content script in the current tab to execute the script
+    chrome.tabs.sendMessage(currentTab.id, 'executeScript');
   });
