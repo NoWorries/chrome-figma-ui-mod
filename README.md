@@ -7,8 +7,7 @@ A simple chrome extension to adjust the Figma website editor in a few areas, the
 - Added horizontal scroll to the Layer List – reduce the truncation of layer names
 - Increased the size of Library Analytics modal – instead of a narrow modal it now takes up the full viewport
 - Swap instance picker enlarged – avoid truncation of component names
-
-![Screen recording showing the extension being run on several pages](demo-extension.gif)
+- Export Analytics as CSV – Export detailed library or component analytics as CSV (Analytics modal needs to be visible on screen)
 
 ## Notes
 * The plugin will only function on Figma URLs that match this format `*://*.figma.com/*`
@@ -30,6 +29,7 @@ A simple chrome extension to adjust the Figma website editor in a few areas, the
 - [x] Reposition eyedropper
 - [x] File preview image enlarged
 - [x] Fullscreen analytics and library modal
+- [x] Add Library Analytics export
 
 ## Known limitations
 * Color Styles (Grid view) - Color options set with positioned absolute in 6-column rows.
