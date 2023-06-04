@@ -2,16 +2,18 @@
 
 A chrome extension to provide advanced options for Figma users, including:
 
-1) Export Analytics as CSV
-• Export detailed library or component analytics as CSV (Analytics modal needs to be visible on screen)
+**Export Analytics as CSV**
+* Export detailed library or component analytics as CSV (Analytics modal needs to be visible on screen)
 
-2) Enable several CSS overrides to adjust the Figma UI to make better of available space on larger viewports:
-• Doubled the width of the Properties Panel (Right hand sidebar) – reduce truncation
-• Wider Select Dropdowns – reduce truncation
-• Increased the size of File Preview thumbnail – more space due to the wider sidebar
-• Added horizontal scroll to the Layer List – avoid truncation of layer names
-• Increased the size of Library Analytics modal – instead of a narrow modal it now takes up the full viewport
-• Swap instance picker enlarged – reduce truncation
+**Enable several CSS overrides**
+
+Adjust the Figma UI to make better of available space on larger viewports:
+* Doubled the width of the Properties Panel (Right hand sidebar) – reduce truncation
+* Wider Select Dropdowns – reduce truncation
+* Increased the size of File Preview thumbnail – more space due to the wider sidebar
+* Added horizontal scroll to the Layer List – avoid truncation of layer names
+* Increased the size of Library Analytics modal – instead of a narrow modal it now takes up the full viewport
+* Swap instance picker enlarged – reduce truncation
 
 ## Notes
 * The plugin will only function on Figma URLs that match this format `*://*.figma.com/*`
