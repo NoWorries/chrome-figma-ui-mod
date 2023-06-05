@@ -14,74 +14,74 @@
     }
     
     /* Properties panel */
-    [class^="properties_panel--drillDownContainerNarrow--"] {
+    [class*="properties_panel--drillDownContainerNarrow--"] {
         width: var(--panelWidth) !important;
     }
     
     /* Shrink Properties panel to show the left border */
-    [class^="properties_panel--scrollContainer--"] {
+    [class*="properties_panel--scrollContainer--"] {
         width: calc(var(--panelWidth) - 1px) !important;
     }
     
-    [class^="properties_panel--scrollContainer--"] [class^="select--dropdownContainer--"] {
+    [class*="properties_panel--scrollContainer--"] [class*="select--dropdownContainer--"] {
         width: var(--selectDropdownWidth) !important;
     }
     
-    [class^="properties_panel--scrollContainer--"] [class^="draggable_modal--positionedContainer--"] {
+    [class*="properties_panel--scrollContainer--"] [class*="draggable_modal--positionedContainer--"] {
         width: var(--selectDropdownWidth) !important;
     }
     
-    [class^="properties_panel--scrollContainer--"] [class^="component_panel_title--container--"] {
+    [class*="properties_panel--scrollContainer--"] [class*="component_panel_title--container--"] {
         flex-grow: 1;
     }
     
     /* Color/Effect Styles panel */
-    [class^="properties_panel--propertiesPanel--"] [class^="style_picker--search--"] + div > div {
+    [class*="properties_panel--propertiesPanel--"] [class*="style_picker--search--"] + div > div {
         width: 100% !important;
     }
     
     /* Layers panel / Layer name */
-    [class^="left_panel--panelContainer--"] [class^="scroll_container--full--"] [class^="object_row--rowText--"]{
+    [class*="left_panel--panelContainer--"] [class*="scroll_container--full--"] [class*="object_row--rowText--"]{
         
         overflow-x: auto;
         text-overflow: unset;
     }
     
     /* Properties panel - Extend right icons */
-    [class^="properties_panel--scrollContainer--"] [class*="background_panel--visible--"],
-    [class^="properties_panel--scrollContainer--"] [class*="layer_panel--visible--"],
-    [class^="properties_panel--scrollContainer--"] [class*="transform_panel--iconButton--SP2iR"] {
+    [class*="properties_panel--scrollContainer--"] [class*="background_panel--visible--"],
+    [class*="properties_panel--scrollContainer--"] [class*="layer_panel--visible--"],
+    [class*="properties_panel--scrollContainer--"] [class*="transform_panel--iconButton--SP2iR"] {
         grid-column-start: 27 !important;
         grid-column-end: span 2 !important;
     }
     
     /* Properties panel - Adjust grid icons */
     
-    [class^="properties_panel--scrollContainer--"] [class*="align_panel--alignButton--"] {
+    [class*="properties_panel--scrollContainer--"] [class*="align_panel--alignButton--"] {
         width: 32px;
     }
-    [class^="properties_panel--scrollContainer--"] [class*="orientation_control--orientationControl--"]{
+    [class*="properties_panel--scrollContainer--"] [class*="orientation_control--orientationControl--"]{
         grid-column-start: 26 !important;
         grid-column-end: unset !important;
     }
     
-    [class^="properties_panel--scrollContainer--"] [class*="transform_panel--checkbox--"] {
+    [class*="properties_panel--scrollContainer--"] [class*="transform_panel--checkbox--"] {
         grid-column-end: span 2 !important;
         place-self: flex-start !important;
     }
     
     /* Stroke panel - Adjust grid icons */
     
-    [class^="properties_panel--scrollContainer--"] [class*="paint_panels--advancedStroke--"] {
+    [class*="properties_panel--scrollContainer--"] [class*="paint_panels--advancedStroke--"] {
         grid-column-start: 27 !important;
         grid-column-end: span 2 !important;
     }
     
     /* Styles panel - Adjust indents */
-    [class^="properties_panel--scrollContainer--"] [class*="styles--childLeftContainer--"] {
+    [class*="properties_panel--scrollContainer--"] [class*="styles--childLeftContainer--"] {
         grid-column-end: span 1 !important;
     }
-    [class^="properties_panel--scrollContainer--"] [class*="raw_components--_singleRow--"] > span {
+    [class*="properties_panel--scrollContainer--"] [class*="raw_components--_singleRow--"] > span {
         grid-column-end: span 2 !important;
     }
     
@@ -97,18 +97,18 @@
 
     /* Eyedropper loupe position */
     
-    [class^="eyedropper_view--container--"] {
+    [class*="eyedropper_view--container--"] {
         right: calc(12px + var(--panelWidth)) !important;
     }
     
     /* Hint panel adjust width and icons */
-    [class^="properties_panel--scrollContainer--"] [class*="hint_panel--onboardingDismissIconNarrow--"] {
+    [class*="properties_panel--scrollContainer--"] [class*="hint_panel--onboardingDismissIconNarrow--"] {
         grid-column-start: 27 !important;
     }
-    [class^="properties_panel--scrollContainer--"] [class*="hint_panel--onboardingLabel--"] {
+    [class*="properties_panel--scrollContainer--"] [class*="hint_panel--onboardingLabel--"] {
         grid-column-start: 3 !important;
     }
-    [class^="properties_panel--scrollContainer--"] [class*="hint_panel--onboardingLabelNarrow--"] {
+    [class*="properties_panel--scrollContainer--"] [class*="hint_panel--onboardingLabelNarrow--"] {
         grid-column-end: span 26 !important;
     }
     
@@ -120,13 +120,13 @@
 
     /* File preview enlarged */
     
-    [class^="properties_panel--scrollContainer--"] [class*="export_panel--previewThumbnailContainer--"] > img {
+    [class*="properties_panel--scrollContainer--"] [class*="export_panel--previewThumbnailContainer--"] > img {
         aspect-ratio: auto;
         width: var(--dropdownWidth);
         height: auto;
     }
     
-    [class^="properties_panel--scrollContainer--"] [class*="export_panel--label--"] {
+    [class*="properties_panel--scrollContainer--"] [class*="export_panel--label--"] {
         grid-column-start: 3;
     }
     
@@ -143,27 +143,27 @@
 
     /* Properties flex columns */ 
 
-    [class^="prop_assignment_row--propAssignmentRow--"] {
+    [class*="prop_assignment_row--propAssignmentRow--"] {
         grid-template-columns: repeat(27, var(--columnWidth)) !important;
     }
 
     /* Fullsize modal for Analytics and Library */
     
-    body:has([class^="header_modal--modal--"]){
+    body:has([class*="header_modal--modal--"]){
         position: fixed;
     }
     
-    [class^="header_modal--modal--"] {
+    [class*="header_modal--modal--"] {
         min-width: 100vw !important;
         min-height: 100vh !important;
     }
     
-    [class^="header_modal--modalBackground--"] {
+    [class*="header_modal--modalBackground--"] {
         overscroll-behavior-y: contain;
         overflow-y: auto;
     }
     
-    [class^="org_view_modal--container--"] {
+    [class*="org_view_modal--container--"] {
         height: calc(100vh - 49px) !important;
     }
     
@@ -181,47 +181,47 @@
     }
 
     /* Libraries scrolling panel */
-    [class^="org_view_modal--container--"] [class^="dsa_list_view--slidingPaneContainer--"],
-    [class^="org_view_modal--container--"] [class^="dsa_file_view_v2--slidingPane--"],
-    [class^="org_view_modal--container--"] [class^="dsa_file_view_modal--container--"] {
+    [class*="org_view_modal--container--"] [class*="dsa_list_view--slidingPaneContainer--"],
+    [class*="org_view_modal--container--"] [class*="dsa_file_view_v2--slidingPane--"],
+    [class*="org_view_modal--container--"] [class*="dsa_file_view_modal--container--"] {
         height: calc(100vh - 49px) !important;
     }
     
-    [class^="org_view_modal--container--"] [class^="sliding_pane--slidingPaneContainer--"] {
+    [class*="org_view_modal--container--"] [class*="sliding_pane--slidingPaneContainer--"] {
         overflow: auto !important;
         overscroll-behavior-y: contain !important;
         overflow-y: auto !important;
     }
     
-    [class^="dsa_list_view--dsaFileListView--"] {
+    [class*="dsa_list_view--dsaFileListView--"] {
         max-height: unset;
     }
 
-    [class^="header_modal--modal--"] [class^="dsa_list_view--"],
-    [class^="header_modal--modal--"] [class^="dsa_file_view_overview--fileViewDSA--"],
-    [class^="header_modal--modal--"] [class^="dsa_file_view_analytics--fileViewDSAWithFooter--"],
-    [class^="header_modal--modal--"] [class^="library_item_view--fileViewDSANoTab--"],
-    [class^="header_modal--modal--"] [class^="library_item_view--fileViewDSAWithFooterNoTab--"],
-    [class^="header_modal--modal--"] [class^="shared_fonts_modal_content--scrollContainer--"] {
+    [class*="header_modal--modal--"] [class*="dsa_list_view--"],
+    [class*="header_modal--modal--"] [class*="dsa_file_view_overview--fileViewDSA--"],
+    [class*="header_modal--modal--"] [class*="dsa_file_view_analytics--fileViewDSAWithFooter--"],
+    [class*="header_modal--modal--"] [class*="library_item_view--fileViewDSANoTab--"],
+    [class*="header_modal--modal--"] [class*="library_item_view--fileViewDSAWithFooterNoTab--"],
+    [class*="header_modal--modal--"] [class*="shared_fonts_modal_content--scrollContainer--"] {
         min-width: 100% !important;
     }
     
-    [class^="file_view_styles--fileViewDSA--"],
-    [class^="header_modal--modal--"] [class^="dsa_list_view--dsaFileListView--"] {
+    [class*="file_view_styles--fileViewDSA--"],
+    [class*="header_modal--modal--"] [class*="dsa_list_view--dsaFileListView--"] {
         height: calc(100vh - 98px) !important;
     }
     
     
-    [class^="dsa_file_view_analytics--fileViewDSAWithFooter--"] {
+    [class*="dsa_file_view_analytics--fileViewDSAWithFooter--"] {
         height: calc(100vh - 129px) !important;
     }
     
-    [class^="library_item_view--fileViewDSAWithFooterNoTab--"],
-    [class^="dsa_file_view_overview--fileViewDSA--"]{
+    [class*="library_item_view--fileViewDSAWithFooterNoTab--"],
+    [class*="dsa_file_view_overview--fileViewDSA--"]{
         height: calc(100vh - 89px) !important;
     }
     
-    [class^="dsa_file_view_modal--container--"]
-    [class^="library_item_view--fileViewDSANoTab--"] {
+    [class*="dsa_file_view_modal--container--"],
+    [class*="library_item_view--fileViewDSANoTab--"] {
         height: calc(100vh - 49px) !important;
     }
