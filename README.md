@@ -15,6 +15,14 @@ Adjust the Figma UI to make better of available space on larger viewports:
 * Increased the size of Library Analytics modal – instead of a narrow modal it now takes up the full viewport
 * Swap instance picker enlarged – reduce truncation
 
+**Images**
+
+![Screenshot of the plugin enabled, showing the expanded Properties Panel and wider dropdown](images/chrome_store_1280x800.png)
+
+![Figma Analytics modal is displayed on screen with an overlay showing how the content has been extracted to a CSV file](images/Figma_Analytics_-_Export_example.png)
+
+![Two examples of CSV files exported by the plugin, showing details for a Library and a Componenent](images/CSV_examples.png)
+
 ## Notes
 * The plugin will only function on Figma URLs that match this format `*://*.figma.com/*`
 * If you are using multiple tabs at the same time, you might need to toggle the button to relaunch the extension.
