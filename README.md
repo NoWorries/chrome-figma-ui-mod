@@ -1,6 +1,6 @@
 # Advanced Figma options
 
-(Figma UI Mod is a chrome extension)[https://chrome.google.com/webstore/detail/figma-ui-mod/pakkdlcbmijjkcocojcgonopnbkeolle] to provide advanced options for Figma users, including:
+[Figma UI Mod is a chrome extension](https://chrome.google.com/webstore/detail/figma-ui-mod/pakkdlcbmijjkcocojcgonopnbkeolle) to provide advanced options for Figma users, including:
 
 **Export Analytics as CSV**
 * Export detailed library or component analytics as CSV (Analytics modal needs to be visible on screen)
