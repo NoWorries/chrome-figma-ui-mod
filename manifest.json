@@ -1,7 +1,7 @@
 {
   "name": "Figma UI Mod",
   "description": "Figma UI enhancements and Analytics CSV export",
-  "version": "0.7.4",
+  "version": "0.7.5",
   "manifest_version": 3,
   "action": {
     "default_title": "Figma enhance",
@@ -20,7 +20,7 @@
       "js": ["background.js"]
     }
   ],
-  "permissions": ["scripting", "activeTab","tabs"],
+  "permissions": ["scripting", "activeTab"],
   "icons": {
     "16": "favicon_16.png",
     "32": "favicon_32.png",
