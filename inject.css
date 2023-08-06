@@ -14,7 +14,7 @@
     }
     
     /* Properties panel */
-    [class*="properties_panel--drillDownContainerNarrow--"] {
+    [class*="properties_panel--drillDownContainer--"] {
         width: var(--panelWidth) !important;
     }
     
