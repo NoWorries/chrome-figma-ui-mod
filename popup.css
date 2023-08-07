@@ -61,3 +61,27 @@
   button + button {
     margin-top: 8px;
   }
+  .reportIssue {
+    line-height: 24px;
+    padding: 4px;
+    margin-top: 12px;
+    text-align: center;
+    max-height: 32px;
+    font-weight: 600;
+    color: darkslategray;
+    text-decoration: none;
+  }
+  .reportIssue:hover {
+    color: #0d99ff;
+  }
+  .reportIssue svg {
+    bottom: -3px;
+    margin-right: 3px;
+    position: relative;
+  }
+  .reportIssue svg path {
+    color: darkslategray;
+ }
+  .reportIssue:hover svg path {
+    fill: #0d99ff;
+}
