@@ -116,7 +116,8 @@ function executeScriptBasedOnModals() {
       const currentDate = new Date().toISOString().split('T')[0];
 
       // Get the text from the div with the partial classname
-      const headerTitle = document.querySelector('div[class*="header_modal--headerModalTitle--"]').textContent.trim();
+      const headerElement = document.querySelector('div[class*="header_modal--headerModalTitle--"]');
+      const headerTitle = headerElement ? headerElement.textContent.trim() : "Undefined";
 
       // Get the date range from the div with the partial classname
       const headerDateRange = document.querySelector('span[class*="dsa_file_view_tabs--duration--"]').textContent.trim();
