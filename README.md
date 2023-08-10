@@ -15,6 +15,10 @@ Adjust the Figma UI to make better of available space on larger viewports:
 * Increased the size of Library Analytics modal – instead of a narrow modal it now takes up the full viewport
 * Swap instance picker enlarged – reduce truncation
 
+**Donations**
+
+Hope that you find this useful, if you want to say thanks you can [buy me a coffee](https://www.buymeacoffee.com/joshdesignnz).
+
 **Images**
 
 ![Screenshot of the plugin enabled, showing the expanded Properties Panel and wider dropdown](images/chrome_store_1280x800.png)
