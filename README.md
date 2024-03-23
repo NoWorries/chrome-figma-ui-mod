@@ -13,6 +13,7 @@ Adjust the Figma UI to make better of available space on larger viewports:
 * Increased the size of File Preview thumbnail – more space due to the wider sidebar
 * Added horizontal scroll to the Layer List – avoid truncation of layer names
 * Increased the size of Library Analytics modal – instead of a narrow modal it now takes up the full viewport
+* Full screen branch review modal
 * Swap instance picker enlarged – reduce truncation
 
 **JS Bookmarklet**
