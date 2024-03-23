@@ -153,9 +153,11 @@
         position: fixed;
     }
     
-    [class*="header_modal--modal--"] {
+    [class*="header_modal--modal--"],
+    [class*="branch_merge_modal--modalContainer--"] {
         min-width: 100vw !important;
         min-height: 100vh !important;
+        max-width: unset;
     }
     
     [class*="header_modal--modalBackground--"] {
@@ -224,4 +226,14 @@
     [class*="dsa_file_view_modal--container--"],
     [class*="library_item_view--fileViewDSANoTab--"] {
         height: calc(100vh - 49px) !important;
+    }
+
+    /* Flex layout of the branch review */
+
+    [class*="chunk_diff--container--"] { 
+        flex-grow: 0;
+    }
+
+    [class*="comparison_container--sideBySideContainer--oXHTB"] { 
+        flex-grow: 1;
     }

@@ -52,6 +52,7 @@ Hope that you find this useful, if you want to say thanks you can [buy me a coff
 - [x] File preview image enlarged
 - [x] Fullscreen analytics and library modal
 - [x] Add Library Analytics export
+- [x] Fullscreen branch review 
 
 ## Known limitations
 * Color Styles (Grid view) - Color options set with positioned absolute in 6-column rows.
