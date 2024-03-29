@@ -24,7 +24,7 @@ function executeScriptBasedOnModals() {
       const data = rows.map(row => {
         const avatarColumn = row.querySelector('div[class*="library_item_view--fileViewDSANoTab--"] div[class*="library_item_stats--avatarColumnComponentName--"]');
         const componentName = avatarColumn.textContent.trim();
-        const statsColumns = Array.from(row.querySelectorAll('div[class*="library_item_view--fileViewDSANoTab--"] div[class*="library_item_stats--statsColVal---"]')).map(column => column.textContent.trim());
+        const statsColumns = Array.from(row.querySelectorAll('div[class*="library_item_view--fileViewDSANoTab--"] div[class*="library_item_stats--statsColVal--"]')).map(column => column.textContent.trim());
         return [componentName, ...statsColumns];
       });
 
@@ -108,7 +108,7 @@ function executeScriptBasedOnModals() {
       const data = rows.map(row => {
         const avatarColumn = row.querySelector('div[class*="library_item_stats--avatarColumnComponentName--"]');
         const componentName = avatarColumn.textContent.trim();
-        const statsColumns = Array.from(row.querySelectorAll('div[class*="library_item_stats--statsColVal---"]')).map(column => column.textContent.trim());
+        const statsColumns = Array.from(row.querySelectorAll('div[class*="library_item_stats--statsColVal--"]')).map(column => column.textContent.trim());
         return [componentName, ...statsColumns];
       });
 
