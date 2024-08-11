@@ -5,7 +5,43 @@
 
 
 function executeScriptBasedOnModals() {
-  if (document.querySelector('[class*="component_file_view_header--header--"]')) {
+
+  var exportData = false;
+  var exportTab = "";
+
+  if (document.querySelector('[class*="dsa_file_view_modal--container--"]')) {
+    console.log("------");
+    console.log("✅ Library Analytics: Open");
+
+    var exportData = true;
+
+    if (
+      document.querySelector('[class*="dsa_file_view_overview--fileViewDSA--"]')
+    ) {
+      console.log("❌ Visible: Overview");
+      alert("ℹ️ Switch to the Analytics tab to export data.");
+    } else if (
+      document.querySelector('[class*="dsa_file_view_v2--slidingPaneLeft--"]')
+    ) {
+      console.log("✅ Visible: Component detail");
+      var exportTab = "Component Detail";
+    } else if (
+      document.querySelector(
+        '[class*="dsa_file_view_analytics--fileViewDSA--"]'
+      )
+    ) {
+      console.log("✅ Visible: All components");
+      var exportTab = "Component List";
+    
+    }
+  } else {
+    alert("Library Analytics modal is not visible.");
+    console.log("❌ Library Analytics: Closed");
+  }
+
+
+
+  if ( exportData && exportTab == "Component Detail") {
       // Call the function for element1
      // functionForElement1();
      // alert("component page");
@@ -13,8 +49,8 @@ function executeScriptBasedOnModals() {
       // Export Figma Component Analytics
 
       // Scrape content from the webpage
-      const containerDiv = document.querySelector('div[class*="library_item_view--fileViewDSANoTab--"] div[class*="library_item_stats--allComponentsTable--"]');
-      const rows = Array.from(containerDiv.querySelectorAll('div[class*="library_item_view--fileViewDSANoTab--"] div[class*="library_item_stats--row--"]'));
+      const containerDiv = document.querySelector('div[class*="library_item_stats--allComponentsTable--"]');
+      const rows = Array.from(containerDiv.querySelectorAll('div[class*="library_item_stats--row--"]'));
 
       // Extract table headings
       const headerRow = containerDiv.querySelector('div[class*="library_item_stats--headerRowAllComponentTable--"]');
@@ -22,9 +58,9 @@ function executeScriptBasedOnModals() {
 
       // Extract data from each row
       const data = rows.map(row => {
-        const avatarColumn = row.querySelector('div[class*="library_item_view--fileViewDSANoTab--"] div[class*="library_item_stats--avatarColumnComponentName--"]');
+        const avatarColumn = row.querySelector('div[class*="library_item_stats--avatarColumnComponentName--"]');
         const componentName = avatarColumn.textContent.trim();
-        const statsColumns = Array.from(row.querySelectorAll('div[class*="library_item_view--fileViewDSANoTab--"] div[class*="library_item_stats--statsColVal--"]')).map(column => column.textContent.trim());
+        const statsColumns = Array.from(row.querySelectorAll('div[class*="library_item_stats--statsColVal--"]')).map(column => column.textContent.trim());
         return [componentName, ...statsColumns];
       });
 
@@ -60,16 +96,13 @@ function executeScriptBasedOnModals() {
 
       // Create CSV content
       const csvComponentContent = `${combinedData.map(row => row.map(value => `"${value.replace(/"/g, '""')}"`).join(',')).join('\n')}`;
-      //const csvComponentContent = `${headings.map(value => `"${value.replace(/"/g, '""')}"`).join(',')}\n${combinedData.map(row => row.map(value => `"${value.replace(/"/g, '""')}"`).join(',')).join('\n')}`;
-
-
 
       // Replace spaces and special characters with underscores
       const cleanedHeaderTitle = headerTitle.replace(/[^a-zA-Z0-9]/g, "_");
       const cleanedComponentTitle = componentTitle.replace(/[^a-zA-Z0-9]/g, "_");
 
       // Generate the filename with today's date and the cleaned header title
-      const fileName = `Figma-Component-Analytics_-_${cleanedHeaderTitle}_-_${cleanedComponentTitle}_-_${currentDate}.csv`;
+      const fileNameDetail = `Figma-Component-Analytics_-_${cleanedHeaderTitle}_-_${cleanedComponentTitle}_-_${currentDate}.csv`;
 
       // Create a Blob object to download the CSV file
       const blob = new Blob([csvComponentContent], { type: 'text/csv;charset=utf-8;' });
@@ -81,18 +114,16 @@ function executeScriptBasedOnModals() {
       if (link.download !== undefined) {
         const url = URL.createObjectURL(blob);
         link.setAttribute('href', url);
-        link.setAttribute('download', fileName);
+        link.setAttribute('download', fileNameDetail);
         link.style.visibility = 'hidden';
         document.body.appendChild(link);
         link.click();
         document.body.removeChild(link);
+        console.log("📄 Exporting: "+fileNameDetail+"");
       }
 
 
-    } else if (document.querySelector('[class*="library_analytics_view--teamUsageContainer--"]')) {
-      // Call the function for element2
-     // functionForElement2();
-     // alert("library page");
+    } else if (exportData && exportTab == "Component List") {
 
       // Export Figma Library Analytics
 
@@ -159,13 +190,12 @@ function executeScriptBasedOnModals() {
         document.body.appendChild(link);
         link.click();
         document.body.removeChild(link);
+        console.log("📄 Exporting: "+fileName+"");
       }
 
 
-    } else {
-      // Neither element is visible
-      
-      alert("You can only export results when Library Analytics or Component Analytics are visible.");
+
+
     }
 }
 

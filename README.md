@@ -2,11 +2,15 @@
 
 [Figma UI Mod is a chrome extension](https://chrome.google.com/webstore/detail/figma-ui-mod/pakkdlcbmijjkcocojcgonopnbkeolle) to provide advanced options for Figma users, including:
 
+**Changes**
+* 12 August: CSV export working with Figma UI3 changes.
+
 **Export Analytics as CSV**
-* Export detailed library or component analytics as CSV (Analytics modal needs to be visible on screen)
+* Export library analytics as CSV
+* Export component analytics as CSV
+Note: Analytics modal needs to be visible on screen
 
 **Enable several CSS overrides**
-
 Adjust the Figma UI to make better of available space on larger viewports:
 * Doubled the width of the Properties Panel (Right hand sidebar) – reduce truncation
 * Wider Select Dropdowns – reduce truncation
