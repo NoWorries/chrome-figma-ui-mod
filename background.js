@@ -49,11 +49,11 @@ function executeScriptBasedOnModals() {
       // Export Figma Component Analytics
 
       // Scrape content from the webpage
-      const containerDiv = document.querySelector('div[class*="library_item_stats--allComponentsTable--"]');
+      const containerDiv = document.querySelector('div[class*="library_item_stats--statsTable--"]');
       const rows = Array.from(containerDiv.querySelectorAll('div[class*="library_item_stats--row--"]'));
 
       // Extract table headings
-      const headerRow = containerDiv.querySelector('div[class*="library_item_stats--headerRowAllComponentTable--"]');
+      const headerRow = containerDiv.querySelector('div[class*="library_item_stats--statsTableHeaderRow--"]');
       const headings = Array.from(headerRow.querySelectorAll('div[class^="entity--sortableField--"]')).map(heading => heading.textContent.trim());
 
       // Extract data from each row
@@ -71,7 +71,7 @@ function executeScriptBasedOnModals() {
       const headerTitle = document.querySelector('div[class*="header_modal--headerModalTitle--"]').textContent.trim();
 
       // Get the component title
-      const componentTitle = document.querySelector('div[class*="component_file_view_header--name--"]').textContent.trim();
+      const componentTitle = document.querySelector('div[class*="asset_file_view_header--name--"]').textContent.trim();
 
       // Extract additional content
       const description = document.querySelector('div[class*="overview_stats_view--componentDescription--"]').textContent.trim();
@@ -128,11 +128,11 @@ function executeScriptBasedOnModals() {
       // Export Figma Library Analytics
 
       // Scrape content from the webpage
-      const containerDiv = document.querySelector('div[class*="library_item_stats--allComponentsTable--"]');
+      const containerDiv = document.querySelector('div[class*="library_item_stats--statsTable--"]');
       const rows = Array.from(containerDiv.querySelectorAll('div[class*="library_item_stats--row--"]'));
 
       // Extract table headings
-      const headerRow = containerDiv.querySelector('div[class*="library_item_stats--headerRowAllComponentTable--"]');
+      const headerRow = containerDiv.querySelector('div[class*="library_modal_stats--headerRow--"]');
       const headings = Array.from(headerRow.querySelectorAll('div[class^="entity--sortableField--"]')).map(heading => heading.textContent.trim());
 
       // Extract data from each row
@@ -204,4 +204,10 @@ chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
   if (request === 'executeScript') {
     executeScriptBasedOnModals();
   }
+});
+
+chrome.runtime.onInstalled.addListener((_reason) => {
+  chrome.tabs.create({
+    url: 'page.html'
+  });
 });

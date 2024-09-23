@@ -1,12 +1,15 @@
 {
   "name": "Figma UI Mod",
   "description": "Figma UI enhancements and Analytics CSV export",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "manifest_version": 3,
   "action": {
-    "default_title": "Figma enhance",
+    "default_title": "Figma UI Mod",
     "default_popup": "popup.html"
   }, 
+  "background": {
+    "service_worker": "background.js"
+  },
   "host_permissions": [
     "https://*.figma.com/file/*",
     "https://*.figma.com/files/*"
