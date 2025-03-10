@@ -76,15 +76,15 @@ function executeScriptBasedOnModals() {
 
     // Scrape content from the webpage
     const containerDiv = document.querySelector(
-      'div[class*="library_item_stats--statsTable--"]'
+      '[data-testid="component-drilldown"], [data-testid="style-drilldown"]'
     );
     const rows = Array.from(
-      containerDiv.querySelectorAll('div[class*="library_item_stats--row--"]')
+      containerDiv.querySelectorAll('div[class*="table--row--"]')
     );
 
     // Extract table headings
     const headerRow = containerDiv.querySelector(
-      'div[class*="library_item_stats--statsTableHeaderRow--"]'
+      'div[class*="library_item_view--headerRow--"], div[class*="library_modal_stats--headerRow--"]'
     );
     const headings = Array.from(
       headerRow.querySelectorAll('div[class^="entity--sortableField--"]')
@@ -93,13 +93,17 @@ function executeScriptBasedOnModals() {
     // Extract data from each row
     const data = rows.map((row) => {
       const avatarColumn = row.querySelector(
-        'div[class*="library_item_stats--avatarColumnComponentName--"]'
+        'div[class*="library_item_view--oneComponentViewFileNameCol--"], div[class*="stats_table--fileNameColumn--"]'
+      );
+      const teamNameCol = row.querySelector(
+        'div[class*="library_item_view--oneComponentViewTeamCol--"]'
       );
       const componentName = avatarColumn.textContent.trim();
+      const teamName = teamNameCol.textContent.trim();
       const statsColumns = Array.from(
-        row.querySelectorAll('div[class*="library_item_stats--statsColVal--"]')
+        row.querySelectorAll('div[class*="library_modal_stats--numCol"]')
       ).map((column) => column.textContent.trim());
-      return [componentName, ...statsColumns];
+      return [componentName,teamName, ...statsColumns];
     });
 
     // Get current date
@@ -133,7 +137,7 @@ if (modalTypeOrg) {
 
 } else {
   console.log("✅ DSA File view header");
-  let element = document.querySelector('div[class*="header_modal--headerModalTitle--"]');
+  let element = document.querySelector('div[class*="dialog-common-module--header--"]');
   headerElement = element ? element.textContent.trim() : "Undefined";
 }
 
@@ -173,7 +177,7 @@ const headerTitle = headerElement ? headerElement : "Undefined";
     ];
 
     // Combine prependedData with existing data
-    const combinedData = [...prependedData, headings, ...data];
+    const combinedData = [...prependedData, ...data];
 
     // Create CSV content
     const csvComponentContent = `${combinedData
