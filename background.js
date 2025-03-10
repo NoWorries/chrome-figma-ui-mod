@@ -208,15 +208,19 @@ const headerTitle = headerElement ? headerElement : "Undefined";
     }
   } else if (exportData && exportTab == "Component List") {
     // Export Figma Library Analytics
-
     console.log("Running: Component List export");
 
-    // Scrape content from the webpage
+    // Error if there are no results in table
+    if (document.querySelectorAll('div[class*="stats_table--row--"]').length === 0) {
+      alert("No results found!");
+    } else {
+
+      // Scrape content from the webpage
     const containerDiv = document.querySelector(
-      'div[class*="library_item_stats--statsTable--"]'
+      'div[class*="library_item_stats_by_asset--"]'
     );
     const rows = Array.from(
-      containerDiv.querySelectorAll('div[class*="library_item_stats--row--"]')
+      containerDiv.querySelectorAll('div[class*="stats_table--row--"]')
     );
 
     // Extract table headings
@@ -231,11 +235,11 @@ const headerTitle = headerElement ? headerElement : "Undefined";
     // Extract data from each row
     const data = rows.map((row) => {
       const avatarColumn = row.querySelector(
-        'div[class*="library_item_stats--avatarColumnComponentName--"]'
+        'div[class*="stats_table--avatarColumn--"]'
       );
       const componentName = avatarColumn.textContent.trim();
       const statsColumns = Array.from(
-        row.querySelectorAll('div[class*="library_item_stats--statsColVal--"]')
+        row.querySelectorAll('div[class*="stats_table--statsColVal--"]')
       ).map((column) => column.textContent.trim());
       return [componentName, ...statsColumns];
     });
@@ -247,7 +251,7 @@ const headerTitle = headerElement ? headerElement : "Undefined";
     let headerTitle;
 
     if (modalTypeOrg) {
-      console.log("Org Modal");
+      console.log("Workspace Modal");
       // Select the span element that contains the text
       let element = document.querySelector(
         ".end_truncated_text--truncatedText--lYsyo"
@@ -266,16 +270,22 @@ const headerTitle = headerElement ? headerElement : "Undefined";
     } else {
       console.log("File Modal");
       headerTitle = document
-        .querySelector('div[class*="header_modal--headerModalTitle--"]').textContent.trim();
+        .querySelector('h2[class*="dialog-common-module--title--"]').textContent.trim();
     }
+
+    // Get the analytics type from the div with the partial classname
+    const analyticsType = document
+      .querySelector('button[class*="dsa_file_view_tabs--assetType--"]').textContent.trim();
+    
+
     // Get the date range from the div with the partial classname
     const headerDateRange = document
-      .querySelector('span[class*="dsa_file_view_tabs--duration--"]')
-      .textContent.trim();
+      .querySelector('span[class*="dsa_file_view_tabs--duration--"]').textContent.trim();
 
     // Prepend additional content to data
     const prependedData = [
       ["Library", headerTitle],
+      ["Type", analyticsType],
       ["Date", currentDate],
       ["Date range", headerDateRange],
       [],
@@ -296,7 +306,7 @@ const headerTitle = headerElement ? headerElement : "Undefined";
     const cleanedDateRange = headerDateRange.replace(/[^a-zA-Z0-9]/g, "_");
 
     // Generate the filename with today's date and the cleaned header title
-    const fileName = `Figma-Analytics_-_${cleanedHeaderTitle}_-_${cleanedDateRange}_-_${currentDate}.csv`;
+    const fileName = `Figma-Analytics_-_${cleanedHeaderTitle}_-${analyticsType}_-_${cleanedDateRange}_-_${currentDate}.csv`;
 
     // Create a Blob object to download the CSV file
     const blob = new Blob([csvContent], { type: "text/csv;charset=utf-8;" });
@@ -313,6 +323,10 @@ const headerTitle = headerElement ? headerElement : "Undefined";
       document.body.removeChild(link);
       console.log("📄 Exporting: " + fileName + "");
     }
+
+    }
+
+    
   }
 }
 
