@@ -139,7 +139,7 @@ function executeScriptBasedOnModals() {
     } else {
       console.log("✅ DSA File view header");
       let element = document.querySelector(
-        'div[class*="dialog-common-module--header--"]'
+        'h2[class*="dialog-common__title__"]'
       );
       headerElement = element ? element.textContent.trim() : "Undefined";
     }
@@ -280,7 +280,7 @@ function executeScriptBasedOnModals() {
         headerTitle = document
           .querySelector('h2[class*="dialog-common__title__"]')
           .textContent.trim();
-      }
+      } 
 
       // Get the analytics type from the div with the partial classname
       const analyticsType = document
@@ -316,7 +316,7 @@ function executeScriptBasedOnModals() {
       const cleanedDateRange = headerDateRange.replace(/[^a-zA-Z0-9]/g, "_");
 
       // Generate the filename with today's date and the cleaned header title
-      const fileName = `Figma-Analytics_-_${cleanedHeaderTitle}_-${analyticsType}_-_${cleanedDateRange}_-_${currentDate}.csv`;
+      const fileName = `Figma-Analytics_-_${cleanedHeaderTitle}_-_${analyticsType}_-_${cleanedDateRange}_-_${currentDate}.csv`;
 
       // Create a Blob object to download the CSV file
       const blob = new Blob([csvContent], { type: "text/csv;charset=utf-8;" });
