@@ -1,7 +1,7 @@
 {
   "name": "Figma UI Mod",
   "description": "Figma UI enhancements and Analytics CSV export",
-  "version": "1.2.0",
+  "version": "1.3.0",
   "manifest_version": 3,
   "action": {
     "default_title": "Figma UI Mod",
