@@ -22,7 +22,6 @@ function executeScriptBasedOnModals() {
     } else {
       console.log("Modal: DSA wrapper");
       var modalTypeOrg = false;
-      
     }
 
     if (
@@ -31,24 +30,26 @@ function executeScriptBasedOnModals() {
       console.log("❌ Visible: Overview");
       alert("ℹ️ Switch to the Analytics tab to export data.");
     } else if (
-      modalTypeOrg && document.querySelector(
+      modalTypeOrg &&
+      document.querySelector(
         '[class*="overview_stats_view--componentDescriptionAndImage--"]'
-      )) {
+      )
+    ) {
       console.log("✅ Visible: Org Component detail");
       var exportTab = "Component Detail";
-      }
-     else if (
-      document.querySelector('[class*="dsa_file_view_v2--slidingPaneLeft--"]'))
-     {
+    } else if (
+      document.querySelector('[class*="dsa_file_view_v2--slidingPaneLeft--"]')
+    ) {
       console.log("✅ Visible: Component detail");
       var exportTab = "Component Detail";
     } else if (
-      modalTypeOrg && document.querySelector(
+      modalTypeOrg &&
+      document.querySelector(
         '[class*="dsa_library_view--slidingPaneContainer--"]'
-    )) {
+      )
+    ) {
       console.log("✅ Visible: All org components");
       var exportTab = "Component List";
-    
     } else if (
       document.querySelector(
         '[class*="dsa_file_view_v2--slidingPaneContainer--"]'
@@ -59,7 +60,6 @@ function executeScriptBasedOnModals() {
     } else {
       console.log("❌ Can't determine current tab");
     }
-
   } else {
     alert("Library Analytics modal is not visible.");
     console.log("❌ Library Analytics: Closed");
@@ -75,9 +75,9 @@ function executeScriptBasedOnModals() {
     console.log("Running: Component Detail export");
 
     // Scrape content from the webpage
-    const containerDiv = document.querySelector(
-      '[data-testid="component-drilldown"], [data-testid="style-drilldown"]'
-    );
+    const containerDiv =
+      document.querySelector('div[data-testid="component-drilldown"]') ||
+      document.querySelector('div[data-testid="style-drilldown"]');
     const rows = Array.from(
       containerDiv.querySelectorAll('div[class*="table--row--"]')
     );
@@ -103,45 +103,48 @@ function executeScriptBasedOnModals() {
       const statsColumns = Array.from(
         row.querySelectorAll('div[class*="library_modal_stats--numCol"]')
       ).map((column) => column.textContent.trim());
-      return [componentName,teamName, ...statsColumns];
+      return [componentName, teamName, ...statsColumns];
     });
 
     // Get current date
     const currentDate = new Date().toISOString().split("T")[0];
 
-  // Get the text from the div with the partial classname
-let headerElement = "Undefined";
-let text = ""; // Declare text outside the if block
+    // Get the text from the div with the partial classname
+    let headerElement = "Undefined";
+    let text = ""; // Declare text outside the if block
 
-if (modalTypeOrg) {
-  console.log("✅ Org view header");
+    if (modalTypeOrg) {
+      console.log("✅ Org view header");
 
-  // Select the span element that contains the text
-  let element = document.querySelector('span[class*="end_truncated_text--truncatedText--"]');
+      // Select the span element that contains the text
+      let element = document.querySelector(
+        'span[class*="end_truncated_text--truncatedText--"]'
+      );
 
-  if (element) {
-    text = element.textContent; // Now text is accessible outside this block
-    console.log(text);
+      if (element) {
+        text = element.textContent; // Now text is accessible outside this block
+        console.log(text);
 
-    // Check if the text contains " • Default library for all files"
-    if (text.includes(" • Default library for all files")) {
-      // Remove the unwanted part
-      text = text.replace(" • Default library for all files", "");
+        // Check if the text contains " • Default library for all files"
+        if (text.includes(" • Default library for all files")) {
+          // Remove the unwanted part
+          text = text.replace(" • Default library for all files", "");
+        }
+      } else {
+        console.error("Element not found");
+      }
+
+      // Set headerElement to the cleaned text
+      headerElement = text;
+    } else {
+      console.log("✅ DSA File view header");
+      let element = document.querySelector(
+        'div[class*="dialog-common-module--header--"]'
+      );
+      headerElement = element ? element.textContent.trim() : "Undefined";
     }
-  } else {
-    console.error("Element not found");
-  }
 
-  // Set headerElement to the cleaned text
-  headerElement = text;
-
-} else {
-  console.log("✅ DSA File view header");
-  let element = document.querySelector('div[class*="dialog-common-module--header--"]');
-  headerElement = element ? element.textContent.trim() : "Undefined";
-}
-
-const headerTitle = headerElement ? headerElement : "Undefined";
+    const headerTitle = headerElement ? headerElement : "Undefined";
 
     // Get the component title
     const componentTitle = document
@@ -215,124 +218,227 @@ const headerTitle = headerElement ? headerElement : "Undefined";
     console.log("Running: Component List export");
 
     // Error if there are no results in table
-    if (document.querySelectorAll('div[class*="stats_table--row--"]').length === 0) {
+    if (
+      document.querySelectorAll('div[class*="stats_table--row--"]').length === 0
+    ) {
       alert("No results found!");
     } else {
-
       // Scrape content from the webpage
-    const containerDiv = document.querySelector(
-      'div[class*="library_item_stats_by_asset--"]'
-    );
-    const rows = Array.from(
-      containerDiv.querySelectorAll('div[class*="stats_table--row--"]')
-    );
-
-    // Extract table headings
-    const headerRow = containerDiv.querySelector(
-      'div[class*="library_modal_stats--headerRow--"]'
-    );
-    
-    const headings = Array.from(
-      headerRow.querySelectorAll('div[class^="entity--sortableField--"]')
-    ).map((heading) => heading.textContent.trim());
-
-    // Extract data from each row
-    const data = rows.map((row) => {
-      const avatarColumn = row.querySelector(
-        'div[class*="stats_table--avatarColumn--"]'
+      const containerDiv = document.querySelector(
+        'div[class*="library_item_stats_by_asset--"]'
       );
-      const componentName = avatarColumn.textContent.trim();
-      const statsColumns = Array.from(
-        row.querySelectorAll('div[class*="stats_table--statsColVal--"]')
-      ).map((column) => column.textContent.trim());
-      return [componentName, ...statsColumns];
-    });
-
-    // Get current date
-    const currentDate = new Date().toISOString().split("T")[0];
-
-    // Get the text from the div with the partial classname
-    let headerTitle;
-
-    if (modalTypeOrg) {
-      console.log("Workspace Modal");
-      // Select the span element that contains the text
-      let element = document.querySelector(
-        ".end_truncated_text--truncatedText--lYsyo"
+      const rows = Array.from(
+        containerDiv.querySelectorAll('div[class*="stats_table--row--"]')
       );
-      // Extract the text content
-      let text = element.innerText || element.textContent;
 
-      // Check if the text contains " • Default library for all files"
-      if (text.includes(" • Default library for all files")) {
-        // Remove the unwanted part
-        text = text.replace(" • Default library for all files", "");
+      // Extract table headings
+      const headerRow = containerDiv.querySelector(
+        'div[class*="library_modal_stats--headerRow--"]'
+      );
+
+      const headings = Array.from(
+        headerRow.querySelectorAll('div[class^="entity--sortableField--"]')
+      ).map((heading) => heading.textContent.trim());
+
+      // Extract data from each row
+      const data = rows.map((row) => {
+        const avatarColumn = row.querySelector(
+          'div[class*="stats_table--avatarColumn--"]'
+        );
+        const componentName = avatarColumn.textContent.trim();
+        const statsColumns = Array.from(
+          row.querySelectorAll('div[class*="stats_table--statsColVal--"]')
+        ).map((column) => column.textContent.trim());
+        return [componentName, ...statsColumns];
+      });
+
+      // Get current date
+      const currentDate = new Date().toISOString().split("T")[0];
+
+      // Get the text from the div with the partial classname
+      let headerTitle;
+
+      if (modalTypeOrg) {
+        console.log("Workspace Modal");
+        // Select the span element that contains the text
+        let element = document.querySelector(
+          ".end_truncated_text--truncatedText--lYsyo"
+        );
+        // Extract the text content
+        let text = element.innerText || element.textContent;
+
+        // Check if the text contains " • Default library for all files"
+        if (text.includes(" • Default library for all files")) {
+          // Remove the unwanted part
+          text = text.replace(" • Default library for all files", "");
+        }
+
+        // Log or use the cleaned text
+        headerTitle = text.trim();
+      } else {
+        console.log("File Modal");
+        headerTitle = document
+          .querySelector('h2[class*="dialog-common__title__"]')
+          .textContent.trim();
       }
 
-      // Log or use the cleaned text
-      headerTitle = text.trim();
-    } else {
-      console.log("File Modal");
-      headerTitle = document
-        .querySelector('h2[class*="dialog-common-module--title--"]').textContent.trim();
+      // Get the analytics type from the div with the partial classname
+      const analyticsType = document
+        .querySelector('button[class*="dsa_file_view_tabs--assetType--"]')
+        .textContent.trim();
+
+      // Get the date range from the div with the partial classname
+      const headerDateRange = document
+        .querySelector('span[class*="dsa_file_view_tabs--duration--"]')
+        .textContent.trim();
+
+      // Prepend additional content to data
+      const prependedData = [
+        ["Library", headerTitle],
+        ["Type", analyticsType],
+        ["Date", currentDate],
+        ["Date range", headerDateRange],
+        [],
+      ];
+
+      // Combine prependedData with existing data
+      const combinedData = [...prependedData, headings, ...data];
+
+      // Create CSV content
+      const csvContent = `${combinedData
+        .map((row) =>
+          row.map((value) => `"${value.replace(/"/g, '""')}"`).join(",")
+        )
+        .join("\n")}`;
+
+      // Replace spaces and special characters with underscores
+      const cleanedHeaderTitle = headerTitle.replace(/[^a-zA-Z0-9]/g, "_");
+      const cleanedDateRange = headerDateRange.replace(/[^a-zA-Z0-9]/g, "_");
+
+      // Generate the filename with today's date and the cleaned header title
+      const fileName = `Figma-Analytics_-_${cleanedHeaderTitle}_-${analyticsType}_-_${cleanedDateRange}_-_${currentDate}.csv`;
+
+      // Create a Blob object to download the CSV file
+      const blob = new Blob([csvContent], { type: "text/csv;charset=utf-8;" });
+
+      // Create a temporary link element to initiate the download
+      const link = document.createElement("a");
+      if (link.download !== undefined) {
+        const url = URL.createObjectURL(blob);
+        link.setAttribute("href", url);
+        link.setAttribute("download", fileName);
+        link.style.visibility = "hidden";
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+        console.log("📄 Exporting: " + fileName + "");
+      }
     }
-
-    // Get the analytics type from the div with the partial classname
-    const analyticsType = document
-      .querySelector('button[class*="dsa_file_view_tabs--assetType--"]').textContent.trim();
-    
-
-    // Get the date range from the div with the partial classname
-    const headerDateRange = document
-      .querySelector('span[class*="dsa_file_view_tabs--duration--"]').textContent.trim();
-
-    // Prepend additional content to data
-    const prependedData = [
-      ["Library", headerTitle],
-      ["Type", analyticsType],
-      ["Date", currentDate],
-      ["Date range", headerDateRange],
-      [],
-    ];
-
-    // Combine prependedData with existing data
-    const combinedData = [...prependedData, headings, ...data];
-
-    // Create CSV content
-    const csvContent = `${combinedData
-      .map((row) =>
-        row.map((value) => `"${value.replace(/"/g, '""')}"`).join(",")
-      )
-      .join("\n")}`;
-
-    // Replace spaces and special characters with underscores
-    const cleanedHeaderTitle = headerTitle.replace(/[^a-zA-Z0-9]/g, "_");
-    const cleanedDateRange = headerDateRange.replace(/[^a-zA-Z0-9]/g, "_");
-
-    // Generate the filename with today's date and the cleaned header title
-    const fileName = `Figma-Analytics_-_${cleanedHeaderTitle}_-${analyticsType}_-_${cleanedDateRange}_-_${currentDate}.csv`;
-
-    // Create a Blob object to download the CSV file
-    const blob = new Blob([csvContent], { type: "text/csv;charset=utf-8;" });
-
-    // Create a temporary link element to initiate the download
-    const link = document.createElement("a");
-    if (link.download !== undefined) {
-      const url = URL.createObjectURL(blob);
-      link.setAttribute("href", url);
-      link.setAttribute("download", fileName);
-      link.style.visibility = "hidden";
-      document.body.appendChild(link);
-      link.click();
-      document.body.removeChild(link);
-      console.log("📄 Exporting: " + fileName + "");
-    }
-
-    }
-
-    
   }
 }
+
+let modalInterval = null;
+
+// Function to start interval when modal appears
+function startModalInterval(modal) {
+  if (modalInterval) return; // already running
+
+  console.log("🔵 Modal opened, starting interval check");
+
+  modalInterval = setInterval(() => {
+    let targetContainer = null;
+    const modalTypeOrg = document.querySelector(
+      '[class*="org_view_modal--container--"]'
+    )
+      ? true
+      : false;
+
+    if (
+      document.querySelector('[class*="dsa_file_view_overview--fileViewDSA--"]')
+    ) {
+      // ❌ Visible: Overview
+    } else if (
+      modalTypeOrg &&
+      document.querySelector(
+        '[class*="overview_stats_view--componentDescriptionAndImage--"]'
+      )
+    ) {
+      // ✅ Visible: Org Component detail
+      targetContainer = modal.querySelector(
+        '[class*="asset_file_view_header--header--"]'
+      );
+    } else if (
+      document.querySelector('[class*="dsa_file_view_v2--slidingPaneLeft--"]')
+    ) {
+      // ✅ Visible: Component detail
+      targetContainer = modal.querySelector(
+        '[class*="asset_file_view_header--header--"]'
+      );
+    } else if (
+      modalTypeOrg &&
+      document.querySelector(
+        '[class*="dsa_library_view--slidingPaneContainer--"]'
+      )
+    ) {
+      // ✅ Visible: All org components
+      targetContainer = modal.querySelector(
+        '[class*="dsa_file_view_tabs--dropdownContainer--"]'
+      );
+    } else if (
+      document.querySelector(
+        '[class*="dsa_file_view_v2--slidingPaneContainer--"]'
+      )
+    ) {
+      // ✅ Visible: All components
+      targetContainer = modal.querySelector(
+        '[class*="dsa_file_view_tabs--dropdownContainer--"]'
+      );
+    } else {
+      // ❌ Can't determine current tab
+    }
+
+    if (targetContainer) {
+      if (!targetContainer.querySelector("#downloadAnalytics")) {
+        const button = document.createElement("button");
+        button.id = "downloadAnalytics";
+        button.innerText = "Download analytics";
+        button.className = "extension-download-analytics";
+        button.onclick = () => {
+          executeScriptBasedOnModals();
+        };
+        targetContainer.appendChild(button);
+      }
+    }
+  }, 500); // check every half second while modal is open
+}
+
+// Function to stop interval when modal disappears
+function stopModalInterval() {
+  if (modalInterval) {
+    clearInterval(modalInterval);
+    modalInterval = null;
+    console.log("🔴 Modal closed, stopping interval");
+  }
+}
+
+// Observer to detect modal open/close
+const modalObserver = new MutationObserver(() => {
+  const modal =
+    document.querySelector('[class*="dsa_file_view_modal--container--"]') ||
+    document.querySelector('[class*="org_view_modal--container--"]');
+
+  if (modal) {
+    startModalInterval(modal);
+  } else {
+    stopModalInterval();
+  }
+});
+
+// Start watching the document body
+modalObserver.observe(document.body, {
+  childList: true,
+  subtree: true,
+});
 
 // Receive message from the extension popup to execute the script
 chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
