@@ -345,6 +345,47 @@ function startModalInterval(modal) {
 
   console.log("🔵 Modal opened, starting interval check");
 
+  // First, inject CSS (only once)
+  if (!document.getElementById("extensionStyles")) {
+    const style = document.createElement("style");
+    style.id = "extensionStyles";
+    style.textContent = `
+    .extension-download-analytics {
+      font-weight: 400;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      height: 24px;
+      line-height: 32px;
+      max-width: 200px;
+      padding: 0 10px;
+      background-color: transparent;
+      border-radius: 6px;
+      -moz-outline-radius: 6px;
+      cursor: default;
+      -webkit-user-select: none;
+      user-select: none;
+      color: var(--color-text);
+      outline: 1px solid var(--color-text);
+      outline-offset: -1px;
+      background-clip: padding-box;
+      box-sizing: border-box;
+      margin-left:16px;
+    }
+    .extension-download-analytics:active:not(:disabled) {
+      background-color: var(--color-bg-pressed);
+    }
+    .extension-download-analytics:focus:not(:disabled) {
+      outline-width: 2px;
+      outline-offset: -2px;
+      background-color: var(--color-bg-pressed);
+      outline-color: var(--color-bg-toolbar-selected);
+    }
+  `;
+    document.head.appendChild(style);
+  }
+
   modalInterval = setInterval(() => {
     let targetContainer = null;
     const modalTypeOrg = document.querySelector(
@@ -364,9 +405,11 @@ function startModalInterval(modal) {
       )
     ) {
       // ✅ Visible: Org Component detail
-      targetContainer = modal.querySelector(
-        '[class*="asset_file_view_header--header--"]'
-      );
+      targetContainer = Array.from(
+        document.querySelectorAll(
+          '[data-testid="component-drilldown"] [class*="asset_file_view_header--header--"]'
+        )
+      ).find((el) => el.offsetParent !== null);
     } else if (
       document.querySelector('[class*="dsa_file_view_v2--slidingPaneLeft--"]')
     ) {
@@ -409,7 +452,7 @@ function startModalInterval(modal) {
         targetContainer.appendChild(button);
       }
     }
-  }, 500); // check every half second while modal is open
+  }, 1000); // check every half second while modal is open
 }
 
 // Function to stop interval when modal disappears
