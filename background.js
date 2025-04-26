@@ -490,8 +490,10 @@ chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
   }
 });
 
-chrome.runtime.onInstalled.addListener((_reason) => {
-  chrome.tabs.create({
-    url: "page.html",
-  });
+chrome.runtime.onInstalled.addListener((details) => {
+  if (details.reason === "install" || details.reason === "update") {
+    chrome.tabs.create({
+      url: "page.html",
+    });
+  }
 });
