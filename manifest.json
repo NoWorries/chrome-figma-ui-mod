@@ -1,7 +1,7 @@
 {
   "name": "Figma UI Mod",
   "description": "Figma UI enhancements and Analytics CSV export",
-  "version": "1.3.0",
+  "version": "1.3.1",
   "manifest_version": 3,
   "action": {
     "default_title": "Figma UI Mod",
@@ -13,7 +13,7 @@
   "host_permissions": [
     "https://*.figma.com/file/*",
     "https://*.figma.com/files/*",
-        "https://*.figma.com/design/*"
+    "https://*.figma.com/design/*"
   ],
   "content_scripts": [
     {
@@ -22,7 +22,7 @@
         "https://*.figma.com/files/*",
         "https://*.figma.com/design/*"
       ],
-      "js": ["background.js"]
+      "js": ["content.js"]
     }
   ],
   "permissions": ["scripting", "activeTab"],
