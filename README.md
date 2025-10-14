@@ -3,6 +3,7 @@
 [Figma UI Mod is a chrome extension](https://chrome.google.com/webstore/detail/figma-ui-mod/pakkdlcbmijjkcocojcgonopnbkeolle) to provide advanced options for Figma users, including:
 
 **Changes**
+* 14 October 2025: Fixed issue preventing CSV export for component analytics. Updated the UI mod styles to fix container width issue.
 * 27 April 2025: Fixed issue preventing CSV export for component analytics. Added inline download button to the analytic modals.
 * 10 March 2025: Fixed issue preventing CSV export for component analytics. Add ability to export style analytics.
 * 11 November 2024: Fixed issue preventing CSV export. Corrected "undefined" library title in Org Analytics modal.

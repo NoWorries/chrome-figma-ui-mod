@@ -233,7 +233,7 @@ function executeScriptBasedOnModals() {
 
       // Extract table headings
       const headerRow = containerDiv.querySelector(
-        'div[class*="library_modal_stats--headerRow--"]'
+        'tr[class*="library_modal_stats--headerRow--"]'
       );
 
       const headings = Array.from(
@@ -284,12 +284,12 @@ function executeScriptBasedOnModals() {
 
       // Get the analytics type from the div with the partial classname
       const analyticsType = document
-        .querySelector('button[class*="dsa_file_view_tabs--assetType--"]')
+        .querySelector('div[class*="dsa_file_view_tabs--"] > div[class*="dsa_select--"]:first-child button')
         .textContent.trim();
 
       // Get the date range from the div with the partial classname
       const headerDateRange = document
-        .querySelector('span[class*="dsa_file_view_tabs--duration--"]')
+        .querySelector('div[class*="dsa_file_view_tabs--"] > div[class*="dsa_select--"]:last-child button')
         .textContent.trim();
 
       // Prepend additional content to data
