@@ -233,7 +233,7 @@ function executeScriptBasedOnModals() {
 
       // Extract table headings
       const headerRow = containerDiv.querySelector(
-        'div[class*="library_modal_stats--headerRow--"]'
+        'tr[class*="library_modal_stats--headerRow--"]'
       );
 
       const headings = Array.from(
@@ -262,7 +262,7 @@ function executeScriptBasedOnModals() {
         console.log("Workspace Modal");
         // Select the span element that contains the text
         let element = document.querySelector(
-          ".end_truncated_text--truncatedText--lYsyo"
+          "[class^='end_truncated_text--truncatedText--']"
         );
         // Extract the text content
         let text = element.innerText || element.textContent;
