@@ -18,6 +18,7 @@
     [class*="scroll_container--clipContainer--"] {
         width: auto !important;
     }
+    
     /* Properties panel */
     [class*="properties_panel--drillDownContainer--"] {
         width: var(--panelWidth) !important;
