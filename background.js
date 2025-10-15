@@ -284,12 +284,12 @@ function executeScriptBasedOnModals() {
 
       // Get the analytics type from the div with the partial classname
       const analyticsType = document
-        .querySelector('div[class*="dsa_file_view_tabs--"] > div[class*="dsa_select--"]:first-child button')
+        .querySelector('div[class*="dsa_file_view_tabs--dsaDropdowns"] > div[class*="dsa_select--dsaSelectWrapper--"]:first-child button')
         .textContent.trim();
 
       // Get the date range from the div with the partial classname
       const headerDateRange = document
-        .querySelector('div[class*="dsa_file_view_tabs--"] > div[class*="dsa_select--"]:last-child button')
+        .querySelector('div[class*="dsa_file_view_tabs--dsaDropdowns"] > div[class*="dsa_select--dsaSelectWrapper--"]:nth-child(2) button')
         .textContent.trim();
 
       // Prepend additional content to data
@@ -425,7 +425,7 @@ function startModalInterval(modal) {
     ) {
       // ✅ Visible: All org components
       targetContainer = modal.querySelector(
-        '[class*="dsa_file_view_tabs--dropdownContainer--"]'
+        '[class*="dsa_file_view_tabs--dsaDropdowns--"]'
       );
     } else if (
       document.querySelector(
@@ -434,7 +434,7 @@ function startModalInterval(modal) {
     ) {
       // ✅ Visible: All components
       targetContainer = modal.querySelector(
-        '[class*="dsa_file_view_tabs--dropdownContainer--"]'
+        '[class*="dsa_file_view_tabs--dsaDropdowns--"]'
       );
     } else {
       // ❌ Can't determine current tab
